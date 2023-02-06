@@ -48,6 +48,13 @@ export default {
         }
       }
     },
+    resetBoard() {
+      for (let i = 0; i <= 8; i++) {
+        this.content[i] = "";
+        this.isOver = false;
+        this.winner = null;
+      }
+    },
   },
 };
 </script>
@@ -67,6 +74,7 @@ export default {
       <div id="block_8" class="block" @click="draw(8)">{{ content[8] }}</div>
     </div>
     <h2 id="winner" v-if="isOver">Winner is {{ winner }}</h2>
+    <button @click="resetBoard()" v-if="isOver">Reset Board</button>
   </div>
 </template>
 
