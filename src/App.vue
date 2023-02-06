@@ -6,6 +6,7 @@ export default {
       turn: true,
       isOver: false,
       winner: null,
+      isTie: false,
     };
   },
   methods: {
@@ -17,6 +18,7 @@ export default {
       }
       this.turn = !this.turn;
       this.calculateWinner();
+      this.calculateTie();
     },
     calculateWinner() {
       const WIN_CONDITIONS = [
@@ -48,11 +50,20 @@ export default {
         }
       }
     },
+    calculateTie() {
+      for (let i = 0; i <= 8; i++) {
+        if (this.content[i] === "") {
+          return;
+        }
+      }
+      this.isTie = true;
+    },
     resetBoard() {
       for (let i = 0; i <= 8; i++) {
         this.content[i] = "";
         this.isOver = false;
         this.winner = null;
+        this.isTie = false;
       }
     },
   },
@@ -74,7 +85,8 @@ export default {
       <div id="block_8" class="block" @click="draw(8)">{{ content[8] }}</div>
     </div>
     <h2 id="winner" v-if="isOver">Winner is {{ winner }}</h2>
-    <button @click="resetBoard()" v-if="isOver">Reset Board</button>
+    <h2 v-if="isTie">Game is Tie</h2>
+    <button @click="resetBoard()" v-if="isOver || isTie">Reset Board</button>
   </div>
 </template>
 
