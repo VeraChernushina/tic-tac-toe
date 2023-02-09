@@ -1,5 +1,5 @@
 <script type="module">
-import io from 'socket.io-client';
+import io from "socket.io-client";
 const socket = io("http://localhost:3000");
 export default {
   data() {
@@ -76,8 +76,8 @@ export default {
     socket.on("play", (index) => {
       console.log("received index", index);
       this.draw(index, true);
-    })
-  }
+    });
+  },
 };
 </script>
 
@@ -85,15 +85,33 @@ export default {
   <div class="container">
     <h1>Tic tac toe</h1>
     <div class="play-area">
-      <div id="block_0" class="block" @click="draw(0, false)">{{ content[0] }}</div>
-      <div id="block_1" class="block" @click="draw(1, false)">{{ content[1] }}</div>
-      <div id="block_2" class="block" @click="draw(2, false)">{{ content[2] }}</div>
-      <div id="block_3" class="block" @click="draw(3, false)">{{ content[3] }}</div>
-      <div id="block_4" class="block" @click="draw(4, false)">{{ content[4] }}</div>
-      <div id="block_5" class="block" @click="draw(5, false)">{{ content[5] }}</div>
-      <div id="block_6" class="block" @click="draw(6, false)">{{ content[6] }}</div>
-      <div id="block_7" class="block" @click="draw(7, false)">{{ content[7] }}</div>
-      <div id="block_8" class="block" @click="draw(8, false)">{{ content[8] }}</div>
+      <div id="block_0" class="block" @click="draw(0, false)">
+        {{ content[0] }}
+      </div>
+      <div id="block_1" class="block" @click="draw(1, false)">
+        {{ content[1] }}
+      </div>
+      <div id="block_2" class="block" @click="draw(2, false)">
+        {{ content[2] }}
+      </div>
+      <div id="block_3" class="block" @click="draw(3, false)">
+        {{ content[3] }}
+      </div>
+      <div id="block_4" class="block" @click="draw(4, false)">
+        {{ content[4] }}
+      </div>
+      <div id="block_5" class="block" @click="draw(5, false)">
+        {{ content[5] }}
+      </div>
+      <div id="block_6" class="block" @click="draw(6, false)">
+        {{ content[6] }}
+      </div>
+      <div id="block_7" class="block" @click="draw(7, false)">
+        {{ content[7] }}
+      </div>
+      <div id="block_8" class="block" @click="draw(8, false)">
+        {{ content[8] }}
+      </div>
     </div>
     <h2 id="winner" v-if="isOver">Winner is {{ winner }}</h2>
     <h2 v-if="isTie">Game is Tie</h2>
